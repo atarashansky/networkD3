@@ -143,10 +143,11 @@ d3.sankey = function() {
     while (remainingNodes.length && x < nodes.length) {
       nextNodes = [];
       remainingNodes.forEach(function(node) {
-        if (node.xPos)
+        if (node.xPos){
           node.x = node.xPos  
-        else
+        }else{
           node.x = x;
+        }
         node.dx = nodeWidth;
         node.sourceLinks.forEach(function(link) {
           if (nextNodes.indexOf(link.target) < 0 && !link.cycleBreaker) {
