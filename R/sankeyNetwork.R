@@ -115,8 +115,9 @@ sankeyNetwork <- function(Links, Nodes, Source, Target, Value,
     if (missing(NodeID))
         NodeID = 1
     NodesDF <- data.frame(Nodes[, NodeID])
-    names(NodesDF) <- c("name")
     NodesDF$xPos <- Nodes$xPos
+    names(NodesDF) <- c("name","xPos")
+    return(NodesDF)
     # add node group if specified
     if (is.character(NodeGroup)) {
         NodesDF$group <- Nodes[, NodeGroup]
