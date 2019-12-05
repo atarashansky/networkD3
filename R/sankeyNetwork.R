@@ -118,28 +118,6 @@ sankeyNetwork <- function(Links, Nodes, Source, Target, Value,
     NodesDF$xPos <- Nodes$xPos
     names(NodesDF) <- c("name","xPos")
     return(NodesDF)
-    # add node group if specified
-    if (is.character(NodeGroup)) {
-        NodesDF$group <- Nodes[, NodeGroup]
-    }
-
-    if (is.character(LinkGroup)) {
-        LinksDF$group <- Links[, LinkGroup]
-    }
-
-    margin <- margin_handler(margin)
-
-    # create options
-    options = list(NodeID = NodeID, NodeGroup = NodeGroup, LinkGroup = LinkGroup,
-        colourScale = colourScale, fontSize = fontSize, fontFamily = fontFamily,
-        nodeWidth = nodeWidth, nodePadding = nodePadding, units = units,
-        margin = margin, iterations = iterations, sinksRight = sinksRight)
-
-    # create widget
-    htmlwidgets::createWidget(name = "sankeyNetwork", x = list(links = LinksDF,
-        nodes = NodesDF, options = options), width = width, height = height,
-        htmlwidgets::sizingPolicy(padding = 10, browser.fill = TRUE),
-        package = "networkD3")
 }
 
 #' @rdname networkD3-shiny
